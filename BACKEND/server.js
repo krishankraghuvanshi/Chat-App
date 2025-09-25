@@ -6,6 +6,13 @@ const chats = require("./DATA/data")
 const app = express();
 dotenv.config()
 
+// Add CORS middleware
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+});
+
 const PORT = process.env.PORT || 8080;
 
 app.get("/", (req, res) => {
